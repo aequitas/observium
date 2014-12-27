@@ -2,15 +2,16 @@ FROM tutum/apache-php:latest
 
 WORKDIR /
 
-RUN apt-get update 
+ENV DB_NAME observium
+ENV DB_USER admin
+ENV DB_PASS password
+ENV DB_HOST localhost
 
-RUN apt-get -y upgrade
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install php5-cli php5-mysql php5-snmp snmp graphviz php5-mcrypt php5-json subversion mysql-client rrdtool fping imagemagick whois mtr-tiny nmap ipmitool python-mysqldb
+RUN apt-get update && apt-get -y install php5-cli php5-mysql php5-snmp snmp graphviz php5-mcrypt php5-json subversion mysql-client rrdtool fping imagemagick whois mtr-tiny nmap ipmitool python-mysqldb
 
 RUN rm -rf /app
 
-RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
+RUN mkdir -p /app
 
 WORKDIR /app
 

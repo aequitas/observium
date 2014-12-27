@@ -3,10 +3,10 @@
 ## Have a look in includes/defaults.inc.php for examples of settings you can set here. DO NOT EDIT defaults.inc.php!
 
 // Database config
-$config['db_host'] = 'localhost';
-$config['db_user'] = 'USERNAME';
-$config['db_pass'] = 'PASSWORD';
-$config['db_name'] = 'observium';
+$config['db_host'] = '$DB_HOST';
+$config['db_user'] = '$DB_USER';
+$config['db_pass'] = '$DB_PASS';
+$config['db_name'] = '$DB_NAME';
 
 // Location
 $config['install_dir']  = "/app/observium";
