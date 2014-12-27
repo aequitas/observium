@@ -17,7 +17,7 @@ RUN wget http://www.observium.org/observium-community-latest.tar.gz
 
 RUN tar zxvf observium-community-latest.tar.gz
 
-RUN rm -fr /var/www/html && ln -s /opt/observium /var/www/html
+RUN rm -fr /var/www/html && ln -s /opt/observium/html /var/www/html
 
 RUN rm /opt/observium-community-latest.tar.gz
 
