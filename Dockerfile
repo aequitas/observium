@@ -7,7 +7,7 @@ ENV DB_USER admin
 ENV DB_PASS password
 ENV DB_HOST localhost
 
-RUN apt-get update && apt-get -y install php5-cli php5-mysql php5-snmp snmp graphviz php5-mcrypt php5-json subversion mysql-client rrdtool fping imagemagick whois mtr-tiny nmap ipmitool python-mysqldb
+RUN apt-get update && apt-get -y install wget php5-cli php5-mysql php5-snmp snmp graphviz php5-mcrypt php5-json subversion mysql-client rrdtool fping imagemagick whois mtr-tiny nmap ipmitool python-mysqldb
 
 RUN rm -rf /app
 
