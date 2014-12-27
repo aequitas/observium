@@ -1,4 +1,4 @@
-FROM tutum/apache-php:latest
+FROM ubuntu:trusty
 
 WORKDIR /
 
@@ -7,23 +7,21 @@ ENV DB_USER admin
 ENV DB_PASS password
 ENV DB_HOST localhost
 
-RUN apt-get update && apt-get -y install wget php5-cli php5-mysql php5-snmp snmp graphviz php5-mcrypt php5-json subversion mysql-client rrdtool fping imagemagick whois mtr-tiny nmap ipmitool python-mysqldb
+RUN apt-get update && apt-get -y install wget libapache2-mod-php5 php5-cli php5-mysql php5-gd php5-snmp php-pear snmp graphviz php5-mcrypt php5-json subversion mysql-server mysql-client rrdtool fping imagemagick whois mtr-tiny nmap ipmitool python-mysqldb
 
-RUN rm -rf /app
+RUN mkdir -p /opt
 
-RUN mkdir -p /app
-
-WORKDIR /app
+WORKDIR /opt
 
 RUN wget http://www.observium.org/observium-community-latest.tar.gz
 
 RUN tar zxvf observium-community-latest.tar.gz
 
-RUN rm -fr /var/www/html && ln -s /app/observium /var/www/html
+RUN rm -fr /var/www/html && ln -s /opt/observium /var/www/html
 
 RUN rm /app/observium-community-latest.tar.gz
 
-WORKDIR /app/observium
+WORKDIR /opt/observium
 
 ADD config.php .
 

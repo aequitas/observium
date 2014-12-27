@@ -10,7 +10,7 @@ $config['db_pass'] = '$DB_PASS';
 $config['db_name'] = '$DB_NAME';
 
 // Location
-$config['install_dir']  = "/app/observium";
+$config['install_dir']  = "/opt/observium";
 
 // Thie should *only* be set if you want to *force* a particular hostname/port
 // It will prevent the web interface being usable form any other hostname
