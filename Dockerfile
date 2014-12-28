@@ -1,4 +1,7 @@
-FROM phusion/baseimage
+FROM phusion/baseimage:0.9.15
+
+ENV HOME /root
+RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 WORKDIR /
 
@@ -11,6 +14,8 @@ ENV OB_ADMIN ob_admin
 ENV OB_PASS ob_pass
 
 RUN apt-get update && apt-get -y install wget libapache2-mod-php5 php5-cli php5-mysql php5-gd php5-snmp php-pear snmp graphviz php5-mcrypt php5-json subversion mysql-client rrdtool fping imagemagick whois mtr-tiny nmap ipmitool python-mysqldb
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN mkdir -p /opt
 
