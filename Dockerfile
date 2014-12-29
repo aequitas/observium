@@ -41,7 +41,12 @@ ADD observium /etc/cron.d/
 
 ADD config.php /opt/observium/
 
-ADD apache.conf /etc/apache/sites-available/000-default.conf
+RUN sed -i 's/DB_NAME/$DB_NAME/g' /opt/observium/config.php
+RUN sed -i 's/DB_USER/$DB_USER/g' /opt/observium/config.php
+RUN sed -i 's/DB_PASS/$DB_PASS/g' /opt/observium/config.php
+RUN sed -i 's/DB_HOST/$DB_HOST/g' /opt/observium/config.php
+
+ADD apache.conf /etc/apache2/sites-available/000-default.conf
 
 RUN php5enmod mcrypt
 

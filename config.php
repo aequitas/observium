@@ -4,10 +4,10 @@
 
 // Database config
 
-$config['db_host'] = '$DB_HOST';
-$config['db_user'] = '$DB_USER';
-$config['db_pass'] = '$DB_PASS';
-$config['db_name'] = '$DB_NAME';
+$config['db_host'] = 'DB_HOST';
+$config['db_user'] = 'DB_USER';
+$config['db_pass'] = 'DB_PASS';
+$config['db_name'] = 'DB_NAME';
 
 // Location
 $config['install_dir']  = "/opt/observium";
