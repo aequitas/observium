@@ -8,7 +8,7 @@ WORKDIR /
 ENV DB_NAME observium
 ENV DB_USER admin
 ENV DB_PASS password
-ENV DB_HOST localhost
+ENV DB_HOST db
 
 ENV OB_ADMIN ob_admin
 ENV OB_PASS ob_pass
@@ -41,10 +41,10 @@ ADD observium /etc/cron.d/
 
 ADD config.php /opt/observium/
 
-RUN sed -i 's/DB_NAME/$DB_NAME/g' /opt/observium/config.php
-RUN sed -i 's/DB_USER/$DB_USER/g' /opt/observium/config.php
-RUN sed -i 's/DB_PASS/$DB_PASS/g' /opt/observium/config.php
-RUN sed -i 's/DB_HOST/$DB_HOST/g' /opt/observium/config.php
+RUN sed -i 's/DB_NAME/'$DB_NAME'/g' /opt/observium/config.php
+RUN sed -i 's/DB_USER/'$DB_USER'/g' /opt/observium/config.php
+RUN sed -i 's/DB_PASS/'$DB_PASS'/g' /opt/observium/config.php
+RUN sed -i 's/DB_HOST/'$DB_HOST'/g' /opt/observium/config.php
 
 ADD apache.conf /etc/apache2/sites-available/000-default.conf
 
