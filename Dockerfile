@@ -65,8 +65,7 @@ ADD apache2.sh /etc/service/apache2/run
 
 ADD run.sh /
 
-RUN chmod +x /etc/service/apache2/run \
-	&& /run.sh
+RUN chmod +x /etc/service/apache2/run /run.sh
 
 RUN php5enmod mcrypt \
 	&& a2enmod rewrite
