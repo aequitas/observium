@@ -46,7 +46,7 @@ RUN wget http://www.observium.org/observium-community-latest.tar.gz \
 	&& tar zxvf observium-community-latest.tar.gz \
 	&& rm /opt/observium-community-latest.tar.gz \
 	&& mkdir observium/logs observium/rrd \
-	&& chown www-data:www-data rrd \
+	&& chown www-data:www-data observium/rrd \
 	&& rm -fr /var/www/html \
 	&& ln -s /opt/observium/html /var/www/html
 
