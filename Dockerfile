@@ -44,15 +44,11 @@ WORKDIR /opt
 
 RUN wget http://www.observium.org/observium-community-latest.tar.gz \
 	&& tar zxvf observium-community-latest.tar.gz \
+	&& rm /opt/observium-community-latest.tar.gz \
+	&& mkdir observium/logs observium/rrd \
+	&& chown www-data:www-data rrd \
 	&& rm -fr /var/www/html \
-	&& ln -s /opt/observium/html /var/www/html \
-	&&rm /opt/observium-community-latest.tar.gz
-
-WORKDIR /opt/observium
-
-RUN mkdir logs \
-	&& mkdir rrd \
-	&& chown www-data:www-data rrd
+	&& ln -s /opt/observium/html /var/www/html
 
 ADD observium /etc/cron.d/
 
@@ -66,13 +62,14 @@ ADD apache.conf /etc/apache2/sites-available/000-default.conf
 
 RUN mkdir /etc/service/apache2
 ADD apache2.sh /etc/service/apache2/run
-RUN chmod +x /etc/service/apache2/run
+
+ADD run.sh /
+
+RUN chmod +x /etc/service/apache2/run \
+	&& /run.sh
 
 RUN php5enmod mcrypt \
 	&& a2enmod rewrite
-
-ADD run.sh /
-RUN chmod +x /run.sh
 
 WORKDIR /
 
