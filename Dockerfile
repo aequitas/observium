@@ -8,7 +8,7 @@ WORKDIR /
 ENV DB_NAME observium
 ENV DB_USER admin
 ENV DB_PASS password
-ENV DB_HOST db
+ENV DB_HOST ob-db
 
 ENV OB_ADMIN ob_admin
 ENV OB_PASS ob_pass
@@ -54,6 +54,8 @@ RUN a2enmod rewrite
 
 ADD run.sh /
 RUN chmod +x /run.sh
+
+WORKDIR /
 
 EXPOSE 80
 CMD ["/run.sh"]
