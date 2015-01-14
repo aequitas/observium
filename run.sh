@@ -1,8 +1,10 @@
 #!/bin/bash
-apacha2ctl start
+apachectl start
 sleep 1
-php /opt/observium/includes/update/update.php
-php /opt/observium/adduser.php $OB_ADMIN $OB_PASS 10
-apacha2ctl stop
+cd /opt/observium
+php includes/update/update.php
+php adduser.php $OB_ADMIN $OB_PASS 10
+cd /
+apachectl stop
 sleep 1
 /sbin/my_init
