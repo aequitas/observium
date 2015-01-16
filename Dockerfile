@@ -5,9 +5,9 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 WORKDIR /
 
-ENV DB_NAME observium
+ENV DB_NAME OBDB
 ENV DB_USER admin
-ENV DB_PASS password
+ENV DB_PASS obdbpassword
 ENV DB_HOST ob-db
 
 ENV OB_ADMIN ob_admin
