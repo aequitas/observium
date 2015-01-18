@@ -53,10 +53,6 @@ RUN wget http://www.observium.org/observium-community-latest.tar.gz \
 ADD observium /etc/cron.d/
 
 ADD config.php /opt/observium/
-RUN sed -i 's/DB_NAME/'$DB_NAME'/g' /opt/observium/config.php \
-	&& sed -i 's/DB_USER/'$DB_USER'/g' /opt/observium/config.php \
-	&& sed -i 's/DB_PASS/'$DB_PASS'/g' /opt/observium/config.php \
-	&& sed -i 's/DB_HOST/'$DB_HOST'/g' /opt/observium/config.php
 
 ADD apache.conf /etc/apache2/sites-available/000-default.conf
 
