@@ -9,6 +9,8 @@ ENV DB_NAME OBDB
 ENV DB_USER admin
 ENV DB_PASS obdbpassword
 ENV DB_HOST ob-db
+ENV TZ_REGION Europe
+ENV TZ_CITY Berlin
 
 ENV OB_ADMIN ob_admin
 ENV OB_PASS ob_pass
@@ -37,6 +39,9 @@ RUN apt-get update && apt-get -y install \
 	python-mysqldb
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN sed -i "s/\;date\.timezone\ \=/date\.timezone\ \=\ $TZ_REGION\/$TZ_CITY/g" /etc/php5/cli/php.ini && \
+	sed -i "s/\;date\.timezone\ \=/date\.timezone\ \=\ $TZ_REGION\/$TZ_CITY/g" /etc/php5/apache2/php.ini
 
 RUN mkdir -p /opt
 
